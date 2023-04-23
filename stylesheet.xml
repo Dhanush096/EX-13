@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  
+  <xsl:template match="/">
+    <html>
+      <head>
+        <title>Product List</title>
+      </head>
+      <body>
+        <h1>Product List</h1>
+        <table border="1">
+          <tr>
+            <th>Name</th>
+            <th>Price</th>
+          </tr>
+          <xsl:for-each select="products/product">
+            <xsl:if test="price &gt; 50.00">
+              <tr style="background-color: yellow;">
+                <td><xsl:value-of select="name"/></td>
+                <td><xsl:value-of select="price"/></td>
+              </tr>
+            </xsl:if>
+            <xsl:if test="price &lt;= 50.00">
+              <tr>
+                <td><xsl:value-of select="name"/></td>
+                <td><xsl:value-of select="price"/></td>
+              </tr>
+            </xsl:if>
+          </xsl:for-each>
+        </table>
+      </body>
+    </html>
+  </xsl:template>
+  
+</xsl:stylesheet>
